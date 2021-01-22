@@ -9,6 +9,11 @@ const saltRounds = 10;
 const image  = require('./controllers/image');
 const register = require('./controllers/register');
 const signIn = require('./controllers/signin');
+const myAccount = require('./controllers/myaccount');
+const updateUserInfo = require('./controllers/updateUserInfo');
+const updateAddress = require('./controllers/updateAddress');
+const updatePassword = require('./controllers/updatePassword');
+
 
 const db = knex({
     client: 'pg',
@@ -40,6 +45,17 @@ app.post('/imageurl', (req, res) => {image.handleApiCall(req,res)})
 // register request
 app.post('/register', (req, res) => {register.handleRegister(req, res, db, bcrypt, saltRounds)})
 
+// My account request
+app.post('/myaccount', (req, res) => {myAccount.requestinfo(req, res, db, bcrypt, saltRounds)})
+
+// update user info
+app.post('/updateuserinfo', (req, res) => {updateUserInfo.updateUserInfo(req, res, db)})
+
+// update user address
+app.post('/updateaddress', (req, res) => {updateAddress.updateAddress(req, res, db)})
+
+//update password
+app.post('/updatepassword', (req, res) => {updatePassword.updatePassword(req, res, db, bcrypt, saltRounds)})
 
 
 
