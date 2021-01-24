@@ -6,7 +6,6 @@ const updateUserInfo = (req, res, db) =>{
         
     }else{
         db.transaction(trx => {
-
             return trx
                 .where({ email: email })
                 .update({
@@ -16,10 +15,19 @@ const updateUserInfo = (req, res, db) =>{
                 }, ['name', 'surname', 'email'])
                 .into('users')
                 .returning('email')
-                .then(loginEmail =>{
-                    res.json('itemsupdated')
+                .then((e)=>{
+                    return trx.where({ email: email })
+                    .update({email: updateEmail},['email'])
+                    .into('login')
+                    .returning('email')
                 })
+                
         })
+        
+        .then(email =>{
+            res.json(email)
+        })
+
         .catch(err => {
             if (err.detail.includes('email') && err.detail.includes('already exists')){
                 console.log('email')
@@ -28,6 +36,9 @@ const updateUserInfo = (req, res, db) =>{
                 res.status(400).json('unable to update')
             }
         })
+    
+    
+    
     }
     
 }

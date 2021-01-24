@@ -1,6 +1,6 @@
 const handleRegister = (req, res, db, bcrypt, saltRounds) =>{
     const {email, password, name, surname, confirmPassword, address, address2, town, county, postcode} = req.body;
-    if(!email || !password || !name || !surname || !confirmPassword || !address || !address2 || !town || !county || !postcode){
+    if(!email || !password || !name || !surname || !confirmPassword || !address || !town || !county || !postcode){
         console.log(res)
         return res.status(400).json('incorrect form submission')
         
