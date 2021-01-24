@@ -16,13 +16,13 @@ const updatePassword = require('./controllers/updatePassword');
 
 
 const db = knex({
-    client: 'pg',
-    connection:{
-      host :'127.0.0.1',
-      user: 'lukebeach' ,
-      password: '',
-      database: 'foodsite'
-    }  
+  client: 'pg',
+  connection:{
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+      rejectUnauthorized: false
+    }
+  }  
 });
 
 
