@@ -15,13 +15,17 @@ const updateAddress = require('./controllers/updateAddress');
 const updatePassword = require('./controllers/updatePassword');
 
 
+
+
 const db = knex({
   client: 'pg',
   connection:{
-    connectionString: process.env.DATABASE_URL,
-    ssl: {
-      rejectUnauthorized: false
-    }
+    host:'psql-portfolio.postgres.database.azure.com',
+    port:'5432',
+    dbname:'foodsite',
+    user:"psqladmin@psql-portfolio", 
+    password:"hjQwxFjRxdBw*MJ8",
+    sslmode:require
   }  
 });
 

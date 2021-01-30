@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/56b36823-52e5-4a71-a6b5-813597fdac5e/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/foodsite-api",
+    "appService.deploySubpath": "."
+}
